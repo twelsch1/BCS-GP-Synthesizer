@@ -1,0 +1,26 @@
+parent.0 = clusterSplitParent.params
+
+# We have one function set, of class GPFunctionSet
+gp.fs.size = 1
+gp.fs.0 = ec.gp.GPFunctionSet
+# We'll call the function set "f0".
+gp.fs.0.name = f0
+seed.0 = time
+
+
+
+pop.subpop.0.size = 2500
+
+
+generations = 20
+silent=false
+
+#select.tournament.size = 7
+
+
+eval.problem = evoSynthesis.CLIAProblem
+eval.problem.data = datatypes.IntData
+
+# output statistics to the file "out.stat" in the directory
+# the run was started in
+stat.file				$out.stat
