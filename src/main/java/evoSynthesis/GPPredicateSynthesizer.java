@@ -75,7 +75,14 @@ public class GPPredicateSynthesizer extends Synthesizer {
 
 	@Override
 	public SynthesisResult synthesize(Verifier verifier) {
+		String[] synthesisVariableNames = new String[verifier.getVerVarNames().length];
+		for (int i = 0; i < verifier.getVerVarNames().length; i++) {
+			synthesisVariableNames[i] = "var" + (i+1) + ";";
+		}
+		
+		verifier.setSynthesisVariableNames(synthesisVariableNames);
 		//Perform evolutionary run 
+		//verifier.get
 		boolean synthSuccessful = false;
 		
 		//System.out.println("Running GP");
@@ -123,21 +130,16 @@ public class GPPredicateSynthesizer extends Synthesizer {
 		if (bestProgram.isEmpty()) {
 			
 			
-			//System.out.println("Correct program not found");
 		    Collections.sort(individuals);
 			GPIndividual ind = (GPIndividual) individuals.get(0);
 			bestProgramTree = ind.trees[0].child;
 			bestProgram = bestProgramTree.makeLispTree();
-			//System.out.println("Best program found: " + bestProgram);
 		
 		} else {
-			////System.out.println("Correct program found");
 			synthSuccessful = true;
 		}
 		
 
-		
-		//System.out.println("Best Program: " + bestProgram);
 		Evolve.cleanup(evaluatedState);
 		return new SynthesisResult(synthSuccessful,bestProgramTree.makeLispTree());
 	}
