@@ -46,6 +46,14 @@ public class FullRunTestBed {
 
 				System.out.println(benchmarkName);
 				Benchmark benchmark = Benchmark.parseBenchmark(benchmarkName);
+				
+				String[] synthesisVariableNames = new String[benchmark.getVariableNames().length];
+				for (int k = 0; k < benchmark.getVariableNames().length; k++) {
+					synthesisVariableNames[k] = "var" + (k+1) + ";";
+				}
+				
+				benchmark.setSynthesisVariableNames(synthesisVariableNames);
+				
 				GPPartialsSynthesizer gpPartialsSynthesizer = new GPPartialsSynthesizer(scgpFile, benchmark);
 				Synthesizer partialsSynthesizer = gpPartialsSynthesizer;
 

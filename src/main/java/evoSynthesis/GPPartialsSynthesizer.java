@@ -83,13 +83,6 @@ public class GPPartialsSynthesizer extends Synthesizer {
 	@Override
 	public SynthesisResult synthesize(Verifier verifier) {
 		
-		String[] synthesisVariableNames = new String[verifier.getVerVarNames().length];
-		for (int i = 0; i < verifier.getVerVarNames().length; i++) {
-			synthesisVariableNames[i] = "var" + (i+1) + ";";
-		}
-		
-		verifier.setSynthesisVariableNames(synthesisVariableNames);
-
 		boolean successful = false;
 	    String bestProgram = "";
 	    String split = "";

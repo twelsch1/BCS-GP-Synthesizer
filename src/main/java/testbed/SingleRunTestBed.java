@@ -16,6 +16,13 @@ public class SingleRunTestBed {
 		String benchmarkFile = "src/main/resources/benchmarks/fg_max10.sl";
 		Benchmark benchmark = Benchmark.parseBenchmark(benchmarkFile);
 		
+		String[] synthesisVariableNames = new String[benchmark.getVariableNames().length];
+		for (int i = 0; i < benchmark.getVariableNames().length; i++) {
+			synthesisVariableNames[i] = "var" + (i+1) + ";";
+		}
+		
+		benchmark.setSynthesisVariableNames(synthesisVariableNames);
+		
 		String paramFile = "src/main/resources/booleanchild.params";
 		String scgpFile = "src/main/resources/defineFunIntChild.params";
 	

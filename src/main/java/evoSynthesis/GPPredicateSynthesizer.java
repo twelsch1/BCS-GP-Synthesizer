@@ -75,14 +75,7 @@ public class GPPredicateSynthesizer extends Synthesizer {
 
 	@Override
 	public SynthesisResult synthesize(Verifier verifier) {
-		String[] synthesisVariableNames = new String[verifier.getVerVarNames().length];
-		for (int i = 0; i < verifier.getVerVarNames().length; i++) {
-			synthesisVariableNames[i] = "var" + (i+1) + ";";
-		}
-		
-		verifier.setSynthesisVariableNames(synthesisVariableNames);
-		//Perform evolutionary run 
-		//verifier.get
+
 		boolean synthSuccessful = false;
 		
 		//System.out.println("Running GP");
